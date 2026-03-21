@@ -1,65 +1,74 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+
+// ── EmailJS config ────────────────────────────────────────────────────────────
+// Go to https://www.emailjs.com → Email Services → add Gmail → copy Service ID
+// Go to Email Templates → create template → copy Template ID
+// Go to Account → API Keys → copy Public Key
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+// ─────────────────────────────────────────────────────────────────────────────
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('IDLE');
-  const [responseLog, setResponseLog] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.subject || !formData.message) return;
 
     setStatus('SENDING');
-    setResponseLog(null);
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      
-      const data = await res.json();
-      
-      if (res.ok) {
-        setStatus('SUCCESS');
-        setResponseLog(data.data);
-      } else {
-        setStatus('ERROR');
-        setResponseLog(data.error);
-      }
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:    formData.name,
+          from_email:   formData.email,
+          subject:      formData.subject,
+          message:      formData.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus('SUCCESS');
     } catch (err) {
+      console.error('EmailJS error:', err);
       setStatus('ERROR');
-      setResponseLog("Network error or server unreachable.");
     }
   };
 
   const contactOptions = [
     {
       label: 'EMAIL',
-      val: 'varh6302@gmail.com',
+      val: 'mrcm@gmail.com',
+      href: 'mailto:mrcm@gmail.com',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
       )
     },
     {
       label: 'PHONE',
-      val: '+91 80740 06300',
+      val: '+91 9000540571',
+      href: 'tel:+919000540571',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       )
     },
     {
       label: 'LINKEDIN',
-      val: 'vishnu0317',
+      val: 'linkedin.com/in/chandu7313',
+      href: 'https://www.linkedin.com/in/chandu7313',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
       )
     },
     {
       label: 'GITHUB',
-      val: 'vishnuvalmiki6302',
+      val: 'github.com/chandu7313',
+      href: 'https://github.com/chandu7313',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
       )
@@ -73,6 +82,7 @@ const Contact = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
+        style={{ willChange: 'transform, opacity' }}
         className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-4 block"
       >
         CONTACT
@@ -85,7 +95,8 @@ const Contact = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.1, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
             className="text-5xl sm:text-6xl font-black text-[#1a1c20] leading-[1.1] mb-8 tracking-tight"
           >
             Let's work<br />together.
@@ -95,7 +106,8 @@ const Contact = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.2, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
             className="text-[#4b5563] text-lg sm:text-xl leading-relaxed mb-16 font-medium"
           >
             Open to full-time roles, internships, and interesting freelance projects. Send me a message and I'll respond within 24 hours.
@@ -103,22 +115,32 @@ const Contact = () => {
 
           <div className="space-y-8">
             {contactOptions.map((opt, i) => (
-              <motion.div
+              <motion.a
                 key={i}
+                href={opt.href}
+                target={opt.href.startsWith('http') ? '_blank' : undefined}
+                rel={opt.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ delay: 0.3 + i * 0.1 }}
-                className="flex items-center gap-6 group"
+                transition={{ delay: 0.3 + i * 0.1, ease: "easeOut" }}
+                style={{ willChange: 'transform, opacity' }}
+                className="flex items-center gap-6 group no-underline"
               >
                 <div className="w-12 h-12 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-primary flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   {opt.icon}
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className="text-[10px] text-gray-400 font-black uppercase tracking-[0.15em] mb-1">{opt.label}</p>
                   <span className="text-[#1a1c20] font-black text-sm sm:text-base leading-none block">{opt.val}</span>
                 </div>
-              </motion.div>
+                {/* Arrow */}
+                <div className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300 flex-shrink-0 group-hover:translate-x-1 group-hover:-translate-y-1">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                  </svg>
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>

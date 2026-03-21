@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const trainingData = [
   {
-    title: 'Android Developer Pro',
+    title: 'Android App Development',
     provider: 'Hands-on Project Training',
     period: 'Jun – Jul 2025',
     desc: 'Mastered Kotlin programming, OOP principles, and Android Studio. Built mobile UIs with XML layouts delivering responsive, production-ready app behaviour.',
@@ -20,6 +20,7 @@ const Training = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
+        style={{ willChange: 'transform, opacity' }}
         className="section-label block"
       >
         PROFESSIONAL TRAINING
@@ -30,7 +31,8 @@ const Training = () => {
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
-        transition={{ delay: 0.1 }}
+        transition={{ delay: 0.1, ease: "easeOut" }}
+        style={{ willChange: 'transform, opacity' }}
         className="text-4xl sm:text-5xl lg:text-6xl font-black text-textMain leading-tight mb-16 tracking-tight"
       >
         Training
@@ -43,8 +45,9 @@ const Training = () => {
             key={idx}
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: 0.2 }}
+            viewport={{ once: true, margin: '-50px', amount: 0.1 }}
+            transition={{ delay: 0.2, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
             className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center"
           >
             {/* Certificate Image Area */}

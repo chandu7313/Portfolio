@@ -15,25 +15,21 @@ function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1, // Snappier
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
+      duration: 0.8,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
+      touchMultiplier: 1.5,
     });
 
+    let rafId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);
@@ -60,9 +56,9 @@ function App() {
     <div className="relative w-full min-h-screen text-textMain selection:bg-primary/20 selection:text-primary">
       <Navbar />
       {easterEgg && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-primary/20 backdrop-blur flex-col">
-          <h1 className="text-6xl font-black text-primary font-mono drop-shadow-lg">ACCESS GRANTED</h1>
-          <p className="text-textMain mt-4 font-mono text-xl">Easter egg unlocked. Proceed to hire immediately.</p>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 flex-col">
+          <h1 className="text-6xl font-black text-white font-mono drop-shadow-lg">ACCESS GRANTED</h1>
+          <p className="text-white mt-4 font-mono text-xl">Easter egg unlocked. Proceed to hire immediately.</p>
         </div>
       )}
       
@@ -86,15 +82,9 @@ function App() {
           </div>
         </div>
 
-        {/* Skills: Patterned background */}
-        <div className="bg-background relative z-10">
-          <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.4]" style={{ 
-            backgroundImage: 'radial-gradient(circle at center, rgba(79,70,229,0.06) 1.5px, transparent 1.5px)', 
-            backgroundSize: '32px 32px' 
-          }}></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-20 lg:py-28">
-            <Skills />
-          </div>
+        {/* Skills: Dark accordion section — background handled internally */}
+        <div className="relative z-10">
+          <Skills />
         </div>
 
         {/* Projects: Subtle Background */}

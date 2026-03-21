@@ -38,8 +38,9 @@ const EducationCard = ({ item, isEven }) => (
   <motion.div
     initial={{ opacity: 0, x: isEven ? 15 : -15, y: 10 }}
     whileInView={{ opacity: 1, x: 0, y: 0 }}
-    viewport={{ once: true, margin: '-50px' }}
-    transition={{ duration: 0.5 }}
+    viewport={{ once: true, margin: '-50px', amount: 0.1 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+    style={{ willChange: 'transform, opacity' }}
     className="w-full md:w-[45%] group/card"
   >
     <div className="glass-card p-6 sm:p-8 rounded-[32px] hover:shadow-card-hover transition-all duration-500">
@@ -79,6 +80,7 @@ const Education = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
+        style={{ willChange: 'transform, opacity' }}
         className="section-label block"
       >
         MY JOURNEY
@@ -89,7 +91,8 @@ const Education = () => {
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
-        transition={{ delay: 0.1 }}
+        transition={{ delay: 0.1, ease: "easeOut" }}
+        style={{ willChange: 'transform, opacity' }}
         className="text-4xl sm:text-5xl lg:text-6xl font-black text-textMain leading-tight mb-20 tracking-tight"
       >
         Education

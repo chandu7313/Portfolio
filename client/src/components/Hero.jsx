@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen min-h-[700px] flex flex-col justify-between overflow-hidden bg-black selection:bg-white/20 selection:text-white">
+    <section className="relative z-20 w-full h-screen min-h-[700px] flex flex-col justify-between overflow-hidden bg-black selection:bg-white/20 selection:text-white">
       
       {/* Perfect Reference Background: Pure Black + Fine Grid + Elegant Golden Sweeps */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
@@ -28,14 +28,14 @@ const Hero = () => {
           
           {/* Left Side Block (Left Aligned) */}
           <div className="flex flex-col items-start gap-1 sm:gap-2">
-            <motion.span initial={{x: -50, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{duration: 0.8}} className="text-[14vw] xl:text-[130px]">CHANDRA</motion.span>
-            <motion.span initial={{x: -50, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{duration: 0.8, delay:0.1}} className="text-[14vw] xl:text-[80px] bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">FULL STACK</motion.span>
+            <motion.span initial={{x: -50, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{duration: 0.8}} style={{ willChange: 'transform, opacity' }} className="text-[14vw] xl:text-[130px]">CHANDRA</motion.span>
+            <motion.span initial={{x: -50, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{duration: 0.8, delay:0.1}} style={{ willChange: 'transform, opacity' }} className="text-[14vw] xl:text-[80px] bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">FULL STACK</motion.span>
           </div>
           
           {/* Right Side Block (Right Aligned) */}
           <div className="flex flex-col items-end gap-1 sm:gap-2">
-            <motion.span initial={{x: 50, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{duration: 0.8}} className="text-[14vw] xl:text-[130px]">MOHAN</motion.span>
-            <motion.span initial={{x: 50, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{duration: 0.8, delay:0.1}} className="text-[14vw] xl:text-[80px] bg-gradient-to-l from-yellow-400 to-orange-500 bg-clip-text text-transparent">DEVOPS</motion.span>
+            <motion.span initial={{x: 50, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{duration: 0.8}} style={{ willChange: 'transform, opacity' }} className="text-[14vw] xl:text-[130px]">MOHAN</motion.span>
+            <motion.span initial={{x: 50, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{duration: 0.8, delay:0.1}} style={{ willChange: 'transform, opacity' }} className="text-[14vw] xl:text-[80px] bg-gradient-to-l from-yellow-400 to-orange-500 bg-clip-text text-transparent">DEVOPS</motion.span>
           </div>
           
         </div>
@@ -47,6 +47,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 1 }}
+          style={{ willChange: 'transform, opacity' }}
           src="/123.png" 
           alt="Chandra Mohan" 
           className="object-contain object-bottom w-full h-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)] mix-blend-normal"
@@ -102,22 +103,18 @@ const Hero = () => {
       {/* Fixed gradient floor */}
       <div className="absolute bottom-11 w-full h-24 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
 
-      {/* Marquee Banner */}
-      <div className="absolute bottom-0 left-0 w-full border-t border-white/5 bg-black/90 backdrop-blur-md overflow-hidden flex items-center h-11 sm:h-12 z-40">
-        <motion.div 
-          className="flex whitespace-nowrap gap-6 sm:gap-10 py-2 text-[10px] sm:text-xs font-mono text-white/50 tracking-[0.15em] font-medium uppercase min-w-full"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ ease: "linear", duration: 25, repeat: Infinity }}
-        >
-          {Array(4).fill([
+      {/* Marquee Banner — pure CSS, zero JS overhead */}
+      <div className="absolute bottom-0 left-0 w-full bg-black/90 overflow-hidden flex items-center h-11 sm:h-12 z-40">
+        <div className="flex" style={{ animation: 'marquee 35s linear infinite', willChange: 'transform' }}>
+          {Array(8).fill([
             "TAILWINDCSS", "REACT", "NODE.JS", "EXPRESS.JS", "FASTAPI", "DOCKER", "GITHUB ACTIONS","SPRING BOOT","REDIS","MONGODB","POSTGRES","DSA"
           ]).flat().map((tech, i) => (
-            <span key={i} className="flex items-center gap-3 sm:gap-4">
-              <div className="w-1.5 h-1.5 border border-white/30 rounded-full hover:border-white/80 transition-colors flex-shrink-0"></div> 
+            <span key={i} className="flex items-center gap-3 sm:gap-4 whitespace-nowrap py-2 text-[10px] sm:text-xs font-mono text-white/50 tracking-[0.15em] font-medium uppercase mr-6 sm:mr-10">
+              <div className="w-1.5 h-1.5 border border-white/30 rounded-full flex-shrink-0"></div> 
               {tech}
             </span>
           ))}
-        </motion.div>
+        </div>
       </div>
 
     </section>

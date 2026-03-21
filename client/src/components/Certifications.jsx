@@ -39,6 +39,7 @@ const achievements = [
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
+        style={{ willChange: 'transform, opacity' }}
         className="section-label block"
       >
         CREDENTIALS
@@ -49,7 +50,8 @@ const achievements = [
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
-        transition={{ delay: 0.1 }}
+        transition={{ delay: 0.1, ease: "easeOut" }}
+        style={{ willChange: 'transform, opacity' }}
         className="text-4xl sm:text-5xl lg:text-6xl font-black text-textMain leading-tight mb-20 tracking-tight"
       >
         Certifications & <span className="text-primary">Achievements</span>
@@ -68,7 +70,8 @@ const achievements = [
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ delay: 0.1 + idx * 0.1 }}
+                transition={{ delay: 0.1 + idx * 0.1, ease: "easeOut" }}
+                style={{ willChange: 'transform, opacity' }}
                 className="group"
               >
                 {/* Certificate Image Area */}
@@ -106,8 +109,9 @@ const achievements = [
                 key={idx}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ delay: 0.2 + idx * 0.1 }}
+                viewport={{ once: true, margin: '-50px', amount: 0.1 }}
+                transition={{ delay: 0.2 + idx * 0.1, ease: "easeOut" }}
+                style={{ willChange: 'transform, opacity' }}
                 className="glass-card p-8 flex items-center gap-8 group"
               >
                 <span className="text-5xl sm:text-6xl font-black text-primary/80 group-hover:text-primary transition-colors tracking-tighter flex-shrink-0 min-w-[70px]">

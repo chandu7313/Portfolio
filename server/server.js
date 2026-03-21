@@ -28,17 +28,18 @@ const contactLimiter = rateLimit({
 
 // API Routes
 app.post('/api/contact', contactLimiter, (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, subject, message } = req.body;
 
   // Basic Validation
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: "Missing required fields: name, email, message." });
+  if (!name || !email || !subject || !message) {
+    return res.status(400).json({ error: "Missing required fields: name, email, subject, message." });
   }
 
   const newMessage = {
     id: Date.now().toString(),
     name,
     email,
+    subject,
     message,
     timestamp: new Date().toISOString()
   };

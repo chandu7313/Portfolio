@@ -9,6 +9,7 @@ const About = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
+        style={{ willChange: 'transform, opacity' }}
         className="section-label block"
       >
         A BIT ABOUT ME
@@ -21,7 +22,8 @@ const About = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.1, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
             className="text-4xl sm:text-5xl lg:text-6xl font-black text-textMain leading-[1.1] tracking-tight"
           >
             I solve problems through <span className="text-primary italic">modern code.</span>
@@ -31,7 +33,8 @@ const About = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.2, ease: "easeOut" }}
+            style={{ willChange: 'transform, opacity' }}
             className="text-textMuted text-lg sm:text-xl leading-relaxed font-medium max-w-2xl"
           >
             I'm a Full Stack Developer & DevOps enthusiast based in India. I specialize in building scalable web applications and optimizing delivery pipelines with a focus on clean architecture and developer experience.
@@ -45,7 +48,8 @@ const About = () => {
             className="pt-4"
           >
             <a
-              href="/resume.pdf"
+              href="/chandu cv .pdf"
+              download="Chandra_Mohan_Resume.pdf"
               className="group relative inline-flex items-center gap-3 bg-textMain text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest overflow-hidden transition-all hover:pr-10 shadow-premium active:scale-95"
             >
               <span className="relative z-10">Download Resume</span>
@@ -89,8 +93,9 @@ const About = () => {
               key={i}
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ delay: 0.1 * i + 0.5 }}
+              viewport={{ once: true, margin: '-50px', amount: 0.1 }}
+              transition={{ delay: 0.1 * i + 0.5, ease: "easeOut" }}
+              style={{ willChange: 'transform, opacity' }}
               className="glass-card p-6 rounded-[32px] group"
             >
               <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-xl mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-all duration-500">

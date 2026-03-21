@@ -14,9 +14,9 @@ const projectsData = [
       'Soil analysis → personalised crop/fertiliser recommendations',
     ],
     tags: ['ReactJS', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'Tailwind CSS'],
-    image: './public/proj1.png',
-    github: '#',
-    live: '#',
+    image: './proj1.png',
+    github: 'https://github.com/chandu7313/KMC',
+    live: 'https://kisan-mithar-consultancy.vercel.app/',
   },
   {
     num: '02',
@@ -30,9 +30,9 @@ const projectsData = [
       'Feedback sentiment analysis for continuous service improvement',
     ],
     tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'Tailwind CSS','PostgreSQL'],
-    image: './public/proj3.png',
-    github: '#',
-    live: '#',
+    image: './proj3.png',
+    github: 'https://github.com/chandu7313/UMS',
+    live: 'https://ums-omega-eight.vercel.app/',
   },
   {
     num: '03',
@@ -46,9 +46,9 @@ const projectsData = [
       'Typing indicators, read receipts, and presence detection',
     ],
     tags: ['React', 'Express', 'Socket.io', 'MongoDB', 'JWT'],
-    image: './public/proj2.png',
-    github: '#',
-    live: '#',
+    image: './proj2.png',
+    github: 'https://github.com/chandu7313/Nexus-Chat',
+    live: 'https://nexus-chat-ten-phi.vercel.app/login',
   },
 ];
 
@@ -59,8 +59,9 @@ const ProjectCard = ({ project, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.7, delay: 0.1 }}
+      viewport={{ once: true, margin: '-100px', amount: 0.1 }}
+      transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+      style={{ willChange: 'transform, opacity' }}
       className={`flex flex-col lg:flex-row gap-10 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}
     >
       {/* Image Area */}
@@ -135,6 +136,7 @@ const Projects = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
+        style={{ willChange: 'transform, opacity' }}
         className="section-label block"
       >
         SELECT WORK
@@ -145,6 +147,7 @@ const Projects = () => {
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
+        style={{ willChange: 'transform, opacity' }}
         className="text-4xl sm:text-5xl lg:text-6xl font-black text-textMain leading-tight mb-20 tracking-tight"
       >
         Featured <span className="text-primary">Projects</span>
