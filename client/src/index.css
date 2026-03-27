@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @media (pointer: fine) {
+    *, body, a, button, input, textarea, select, [data-cursor] {
+      cursor: none !important;
+    }
+  }
+
+  body {
+    @apply bg-background text-textMain font-sans antialiased overflow-x-hidden;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #fcfcfc;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(79, 70, 229, 0.15);
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(79, 70, 229, 0.3);
+    }
+  }
+
+  ::selection {
+    @apply bg-primary/10 text-primary;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-primary font-mono text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-4 opacity-80;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-textMain leading-tight mb-8 font-serif;
+  }
+
+  .skill-card {
+    @apply bg-cardBg border border-cardBorder rounded-2xl p-5 flex items-center gap-4 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
+    backface-visibility: hidden;
+  }
+
+  .mesh-gradient {
+    background-color: #fafbff;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.03) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, rgba(139, 92, 246, 0.03) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, rgba(79, 70, 229, 0.03) 0, transparent 50%);
+  }
+
+  .glass-card {
+    @apply bg-white/80 border border-white/60 shadow-glass;
+    /* backdrop-blur removed — it forces a per-frame repaint on every card during scroll */
+  }
+
+  .glass-card:hover {
+    @apply shadow-glass-hover -translate-y-[2px] transition-all duration-300;
+  }
+}
+
+/* Base resets for lenis */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+/* CSS-driven marquee — runs on compositor thread, zero JS */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
