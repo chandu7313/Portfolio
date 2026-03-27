@@ -77,12 +77,7 @@ function App() {
           </div>
         </div>
 
-        {/* Education: Solid background with subtle depth */}
-        <div className="bg-surfaceSubtle relative z-10 border-y border-border">
-          <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 py-20 lg:py-28">
-            <Education />
-          </div>
-        </div>
+        
 
         {/* Skills: Dark accordion section — background handled internally */}
         <div className="relative z-10">
@@ -102,6 +97,13 @@ function App() {
             <Training />
             <div className="h-px bg-border my-20" />
             <Certifications />
+          </div>
+        </div>
+
+        {/* Education: Solid background with subtle depth */}
+        <div className="bg-surfaceSubtle relative z-10 border-y border-border">
+          <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 py-20 lg:py-28">
+            <Education />
           </div>
         </div>
 
