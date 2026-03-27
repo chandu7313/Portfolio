@@ -8,7 +8,7 @@ const trainingData = [
     period: 'Jun – Jul 2025',
     desc: 'Mastered Kotlin programming, OOP principles, and Android Studio. Built mobile UIs with XML layouts delivering responsive, production-ready app behaviour.',
     tags: ['Kotlin', 'Android Studio', 'XML', 'Mobile UI'],
-    certificate: './public/assets/andriod-cer.png', // placeholder for certificate image
+    certificate: '/assets/andriod-cer.png', // placeholder for certificate image
   },
 ];
 
