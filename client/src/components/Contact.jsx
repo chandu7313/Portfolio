@@ -23,17 +23,26 @@ const Contact = () => {
 
     setStatus('SENDING');
 
+    const cleanEmail = formData.email.trim().toLowerCase();
+    const templateParams = {
+      name: formData.name,
+      from_name: formData.name,
+      user_name: formData.name,
+      email: cleanEmail,
+      from_email: cleanEmail,
+      user_email: cleanEmail,
+      reply_to: cleanEmail,
+      subject: formData.subject,
+      title: formData.subject,
+      message: formData.message,
+      time: new Date().toLocaleString(),
+    };
+
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          time: new Date().toLocaleString(),
-        },
+        templateParams,
         EMAILJS_PUBLIC_KEY
       );
 
@@ -53,7 +62,7 @@ const Contact = () => {
       setStatus('SUCCESS');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
-      console.error('EmailJS error:', err);
+      console.error('EmailJS transmission error:', err?.text || err?.message || err);
       setStatus('ERROR');
     }
   };
@@ -338,10 +347,18 @@ const Contact = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-xs font-bold flex items-center gap-2"
+                    className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 font-mono text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                   >
-                    <span>✕</span>
-                    <span>Transmission timed out. Please send directly to chandrgadige@gmail.com</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-rose-400 font-bold">✕</span>
+                      <span>Email service authorization pending. Send directly:</span>
+                    </div>
+                    <a
+                      href={`mailto:chandrgadige@gmail.com?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`From: ${formData.name} (${formData.email})\n\n${formData.message}`)}`}
+                      className="px-3 py-1.5 rounded-lg bg-rose-500/20 hover:bg-rose-500 text-white font-bold text-[11px] uppercase tracking-wider text-center transition-colors whitespace-nowrap"
+                    >
+                      Open in Mail App ↗
+                    </a>
                   </motion.div>
                 )}
               </AnimatePresence>
