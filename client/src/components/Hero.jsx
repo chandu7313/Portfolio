@@ -129,16 +129,15 @@ const Hero = () => {
             </p>
             <div className="flex items-center gap-3 sm:gap-3.5 flex-wrap">
               {[
-                { label: 'Fb.', href: 'https://facebook.com' },
-                { label: 'Ig.', href: 'https://instagram.com' },
-                { label: 'Gh.', href: 'https://github.com/chandu7313' },
-                { label: 'In.', href: 'https://linkedin.com/in/chandu7313/' },
+                { label: 'In.', title: 'LinkedIn', href: 'https://linkedin.com/in/chandu7313/' },
+                { label: 'Gh.', title: 'GitHub', href: 'https://github.com/chandu7313' },
               ].map((soc, idx) => (
                 <a
                   key={idx}
                   href={soc.href}
                   target="_blank"
                   rel="noreferrer"
+                  title={soc.title}
                   data-cursor="pointer"
                   className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-zinc-400 text-zinc-800 flex items-center justify-center text-xs font-bold hover:border-black hover:bg-black hover:text-white transition-all duration-300 shadow-sm"
                 >
