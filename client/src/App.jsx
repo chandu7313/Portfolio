@@ -54,62 +54,63 @@ function App() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen text-textMain selection:bg-primary/20 selection:text-primary">
+    <div className="relative w-full min-h-screen text-white selection:bg-[#b5ff20]/25 selection:text-[#b5ff20] bg-[#070510]">
       <CursorTracker />
       <Navbar />
       {easterEgg && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-primary/80 flex-col">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#7047ff]/90 flex-col backdrop-blur-xl">
           <h1 className="text-6xl font-black text-white font-mono drop-shadow-lg">ACCESS GRANTED</h1>
-          <p className="text-white mt-4 font-mono text-xl">Easter egg unlocked. Proceed to hire immediately.</p>
+          <p className="text-[#b5ff20] mt-4 font-mono text-xl">Easter egg unlocked. Proceed to hire immediately.</p>
         </div>
       )}
       
-      {/* Full Width Hero Section (stays dark) */}
+      {/* Full Width Hero Section (Untouched) */}
       <Hero />
       
-      {/* Main Content Sections (light theme) */}
-      <main className="relative z-10 w-full bg-background overflow-hidden rounded-t-[48px] -mt-12 shadow-[0_-20px_80px_rgba(0,0,0,0.08)]">
+      {/* Main Content Sections (Luxury Dark Theme with Cyber Glows) */}
+      <main className="relative z-10 w-full bg-[#070510] text-white overflow-hidden">
         
-        {/* About: Mesh Gradient Background */}
-        <div className="mesh-gradient relative z-10">
-          <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 pt-16 pb-20">
+        {/* Subtle transition gradient from hero's bottom white bar */}
+        <div className="w-full h-16 sm:h-24 bg-gradient-to-b from-white via-zinc-200/40 to-[#070510] relative z-10" />
+
+        {/* About: High-Tech Bento Matrix */}
+        <div className="relative z-10">
+          <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-20 lg:py-28">
             <About />
           </div>
         </div>
 
-        
-
-        {/* Skills: Dark accordion section — background handled internally */}
-        <div className="relative z-10">
+        {/* Skills: Interactive Matrix & Live Marquee */}
+        <div className="relative z-10 border-t border-white/5 bg-[#090716]/60">
           <Skills />
         </div>
 
-        {/* Projects: Subtle Background */}
-        <div className="bg-surfaceSubtle relative z-10 border-y border-border">
-          <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 py-20 lg:py-28">
+        {/* Projects: Cinematic Video Showcase */}
+        <div className="relative z-10 border-t border-white/5">
+          <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-24 lg:py-32">
             <Projects />
           </div>
         </div>
 
-        {/* Training & Certifications: alternating */}
-        <div className="bg-background relative z-10">
-          <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 py-20 lg:py-28">
-            <Training />
-            <div className="h-px bg-border my-20" />
+        {/* Certifications & Training */}
+        <div className="relative z-10 border-t border-white/5 bg-[#090716]/60">
+          <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-24 lg:py-32">
             <Certifications />
+            <div className="h-px bg-white/10 my-24" />
+            <Training />
           </div>
         </div>
 
-        {/* Education: Solid background with subtle depth */}
-        <div className="bg-surfaceSubtle relative z-10 border-y border-border">
-          <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 py-20 lg:py-28">
+        {/* Education: Interactive Roadmap */}
+        <div className="relative z-10 border-t border-white/5">
+          <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-24 lg:py-32">
             <Education />
           </div>
         </div>
 
-        {/* Contact: Highlighted section */}
-        <div className="bg-surfaceSubtle relative z-10 border-t border-border rounded-t-[48px]">
-          <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 py-20 lg:pb-32 lg:pt-28">
+        {/* Contact: Command Center */}
+        <div className="relative z-10 border-t border-white/10 bg-[#06040e]">
+          <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-24 lg:pb-36 lg:pt-28">
             <Contact />
           </div>
         </div>

@@ -1,158 +1,286 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const projectsData = [
   {
     num: '01',
-    title: 'Kisan Mithar',
-    subtitle: 'Smart Agriculture & Farmer Advisory Platform',
-    period: 'Nov 2025 – Present',
-    desc: 'Full-stack agriculture advisory platform that processes soil data and delivers tailored suggestions. Built with real-time messaging (Socket.io), MongoDB for data persistence, and Fast2SMS OTP authentication to ensure secure verified access.',
-    bullets: [
-      'Live presence tracking & uninterrupted message flow via Socket.io',
-      'Phone OTP authentication using Fast2SMS — no password needed',
-      'Soil analysis → personalised crop/fertiliser recommendations',
+    title: 'VentureForge AI',
+    subtitle: 'Multi-Agent Business Intelligence Platform',
+    period: 'Aug’ 26 – Present',
+    status: 'ACTIVE AGENT FLEET',
+    accent: '#7047ff',
+    badgeGlow: 'rgba(112, 71, 255, 0.35)',
+    domain: 'ventureforge-agent.vercel.app',
+    desc: 'Engineered a full-stack multi-agent platform that turns raw startup ideas into comprehensive, investor-grade business blueprints. Orchestrates parallel specialized LLM agents with asynchronous task execution and real-time frontend streaming.',
+    metrics: [
+      { label: 'Architecture', val: 'Multi-Agent' },
+      { label: 'Job Queue', val: 'BullMQ + Redis' },
+      { label: 'Telemetry', val: 'Grafana 100%' },
     ],
-    tags: ['ReactJS', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'Tailwind CSS'],
-    image: './proj1.png',
-    github: 'https://github.com/chandu7313/KMC',
-    live: 'https://kisan-mithar-consultancy.vercel.app/',
+    bullets: [
+      'Built a high-performance Nest.js & PostgreSQL backend orchestrating parallel autonomous agents with BullMQ and Redis queues',
+      'Integrated Gemini & OpenAI APIs for automated market sizing, competitor risk scoring, and interactive document generation with live SSE streaming',
+      'Instrumented complete microservice fleet telemetry with Prometheus metrics and Grafana dashboards hosted on Docker & Nginx',
+    ],
+    tags: ['Next.js', 'Nest.js', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker', 'Nginx', 'Prometheus', 'Grafana', 'Tailwind CSS'],
+    video: '/videos/ventureForge.mp4',
+    github: 'https://github.com/chandu7313/ventureForge',
+    live: 'https://ventureforge-agent.vercel.app/',
   },
   {
     num: '02',
-    title: 'University Management System',
-    subtitle: 'Analytics & Customer Feedback Platform',
-    period: 'Oct 2025 – Present',
-    desc: 'A customisable university management platform featuring member tracking, agency-specific dashboards, and visual analytics for feedback analysis. Enables teams to identify product strengths, gaps, and user sentiment at scale.',
-    bullets: [
-      'Role-based dashboards for admins, trainers, and members',
-      'Visual analytics with Chart.js for attendance & revenue insights',
-      'Feedback sentiment analysis for continuous service improvement',
+    title: 'Kissan Mithar',
+    subtitle: 'Smart Agriculture & Farmer Advisory Platform',
+    period: 'Sep’ 25 – Dec’ 25',
+    status: '15+ MICROSERVICES LIVE',
+    accent: '#b5ff20',
+    badgeGlow: 'rgba(181, 255, 32, 0.3)',
+    domain: 'kissanmithar.com',
+    desc: 'An event-driven agricultural ecosystem featuring a responsive React.js web portal and Flutter mobile app operating across 15+ decoupled microservices with automated CI/CD and AI crop diagnostics.',
+    metrics: [
+      { label: 'Fleet Scale', val: '15+ Microservices' },
+      { label: 'Event Bus', val: 'RabbitMQ' },
+      { label: 'AI Diagnosis', val: 'Gemini + Plant.id' },
     ],
-    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'Tailwind CSS','PostgreSQL'],
-    image: './proj3.png',
-    github: 'https://github.com/chandu7313/UMS',
-    live: 'https://ums-omega-eight.vercel.app/',
+    bullets: [
+      'Built responsive React web client & Flutter mobile application backed by 15+ event-driven microservices on Node.js, RabbitMQ, and Redis',
+      'Implemented secure JWT auth, real-time soil analysis, agricultural marketplace on PostgreSQL, and AI-powered crop pathology detection',
+      'Automated deployment pipelines with Docker and Jenkins CI/CD, hosting the microservice cluster on AWS EC2 with Nginx reverse proxy',
+    ],
+    tags: ['React.js', 'Node.js', 'Flutter', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Docker', 'Nginx', 'Jenkins', 'AWS EC2'],
+    video: '/videos/kissanMithar.mp4',
+    github: 'https://github.com/chandu7313/Kissan-Mithar',
+    live: 'https://www.kissanmithar.com/',
   },
   {
     num: '03',
-    title: 'Nexus Chat',
-    subtitle: 'Real-Time Messaging Engine',
-    period: '2024 – Present',
-    desc: 'A high-performance chatting engine built for persistent, instant engagement. Decoupled websocket transmission to ensure horizontal scalability and zero-delay message delivery.',
-    bullets: [
-      'Socket.io for real-time bidirectional communication',
-      'Persistent message storage with MongoDB',
-      'Typing indicators, read receipts, and presence detection',
+    title: 'PII Redaction Engine',
+    subtitle: 'Context-Aware Automated Compliance Pipeline',
+    period: 'Jun’ 26',
+    status: '100% PRECISION VERIFIED',
+    accent: '#38bdf8',
+    badgeGlow: 'rgba(56, 189, 248, 0.35)',
+    domain: 'pii-redaction-tool-jet.vercel.app',
+    desc: 'An enterprise automated detection and redaction engine for DOCX documents across 9 PII categories, pairing Microsoft Presidio, spaCy NER, and custom pattern recognizers with zero false positives on technical terminology.',
+    metrics: [
+      { label: 'Recall & Precision', val: '100%' },
+      { label: 'PII Categories', val: '9 Types' },
+      { label: 'False Positives', val: '0 On Tech Terms' },
     ],
-    tags: ['React', 'Express', 'Socket.io', 'MongoDB', 'JWT'],
-    image: './proj2.png',
-    github: 'https://github.com/chandu7313/Nexus-Chat',
-    live: 'https://nexus-chat-ten-phi.vercel.app/login',
+    bullets: [
+      'Automates detection and surgical redaction of sensitive PII in DOCX documents across 9 regulatory categories using spaCy and Presidio',
+      'Designed a context-aware validation layer separating detection from approval via section awareness, confidence recalculation, and protected spans',
+      'Stress-tested on complex technical resumes: filtered 300 candidate anomalies down to 3 genuine PII instances with zero distortion of technical skills',
+    ],
+    tags: ['Python', 'Microsoft Presidio', 'spaCy NER', 'Rule-Based Validation', 'DOCX Parsing', 'FastAPI'],
+    video: '/videos/pii.mp4',
+    github: 'https://github.com/chandu7313/PII-Redaction-Tool',
+    live: 'https://pii-redaction-tool-jet.vercel.app/',
   },
 ];
 
 const ProjectCard = ({ project, index }) => {
   const isEven = index % 2 === 0;
+  const videoRef = useRef(null);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: '-100px', amount: 0.1 }}
-      transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-      style={{ willChange: 'transform, opacity' }}
-      className={`flex flex-col lg:flex-row gap-10 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.7, delay: 0.1 }}
+      className={`flex flex-col lg:flex-row gap-10 lg:gap-14 items-stretch ${
+        !isEven ? 'lg:flex-row-reverse' : ''
+      }`}
     >
-      {/* Image Area */}
-      <div className="flex-1 w-full group relative">
-        <div className="absolute -inset-4 bg-primary/5 rounded-[40px] blur-2xl group-hover:bg-primary/10 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-        <div className="relative aspect-[16/10] bg-gradient-to-br from-white to-surfaceSubtle border border-primary/10 rounded-[32px] overflow-hidden shadow-premium group-hover:shadow-card-hover transition-all duration-500 flex items-center justify-center">
-          {project.image ? (
-            <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          ) : (
-            <div className="text-center p-8">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-[24px] bg-primary/5 border border-primary/10 flex items-center justify-center text-primary text-3xl font-black shadow-inner">
-                {project.num}
-              </div>
-              <p className="text-textMuted font-mono text-xs uppercase tracking-widest">Case Study Artifact</p>
-            </div>
-          )}
+      {/* Visual Column: Cinematic Browser / Device Frame with Video */}
+      <div className="flex-1 w-full flex flex-col justify-center">
+        <div className="group relative rounded-[28px] sm:rounded-[36px] bg-[#0c0919] border border-white/10 overflow-hidden transition-all duration-500 hover:border-white/20 shadow-2xl">
           
-          {/* Hover Overlay Buttons */}
-          <div className="absolute inset-0 bg-textMain/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-             <a href={project.github} className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-textMain hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 delay-[50ms]">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-             </a>
-             <a href={project.live} className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-textMain hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 delay-[100ms]">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-             </a>
+          {/* Ambient Glow behind frame */}
+          <div
+            className="absolute -inset-2 rounded-[40px] opacity-20 group-hover:opacity-40 blur-2xl transition-opacity duration-700 pointer-events-none"
+            style={{ backgroundColor: project.accent }}
+          />
+
+          {/* Browser Top Navigation Bar */}
+          <div className="relative z-10 flex items-center justify-between px-5 py-3.5 bg-[#090714] border-b border-white/10 select-none">
+            {/* macOS Window Controls */}
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-[#ff5f56]/90 border border-[#e0443e]" />
+              <span className="w-3 h-3 rounded-full bg-[#ffbd2e]/90 border border-[#dea123]" />
+              <span className="w-3 h-3 rounded-full bg-[#27c93f]/90 border border-[#1aab29]" />
+            </div>
+
+            {/* URL Pill */}
+            <div className="flex items-center gap-2 px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono text-zinc-400 max-w-[200px] sm:max-w-xs truncate">
+              <span className="text-[#b5ff20]">https://</span>
+              <span className="text-zinc-200">{project.domain}</span>
+            </div>
+
+            {/* Live Status Indicator */}
+            <div className="flex items-center gap-2">
+              <span
+                className="w-2 h-2 rounded-full animate-ping"
+                style={{ backgroundColor: project.accent }}
+              />
+              <span className="hidden sm:inline text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400">
+                {project.status}
+              </span>
+            </div>
+          </div>
+
+          {/* Video Container (Strictly 0 Player Controls, Perfectly Aligned, Native HTML5 Video) */}
+          <div className="relative aspect-[16/10] bg-black overflow-hidden flex items-center justify-center">
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster={`./proj${index + 1}.png`}
+              className="w-full h-full object-cover pointer-events-none select-none"
+            >
+              <source src={project.video} type="video/mp4" />
+            </video>
+
+            {/* Hover Action Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#070510] via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6 z-20">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-mono text-white font-bold tracking-wider">
+                  Interactive Preview
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white text-white hover:text-black flex items-center justify-center transition-all duration-300 backdrop-blur-md"
+                  title="Source Code"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 rounded-full bg-[#b5ff20] hover:bg-[#a3f013] text-black font-extrabold text-xs flex items-center gap-1.5 transition-all duration-300 shadow-lg shadow-[#b5ff20]/20"
+                >
+                  <span>Launch Live</span>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Details */}
-      <div className="flex-1 flex flex-col justify-center">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="px-3 py-1 bg-primary/10 rounded-full text-primary font-black text-xs uppercase tracking-widest">{project.num}</span>
-          <span className="text-textMuted font-mono text-xs font-bold uppercase tracking-wider select-none">{project.period}</span>
+      {/* Details Column */}
+      <div className="flex-1 flex flex-col justify-between py-2">
+        <div>
+          {/* Top Metadata row */}
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
+            <span
+              className="px-3 py-1 rounded-full text-xs font-mono font-black uppercase tracking-wider"
+              style={{
+                backgroundColor: `${project.accent}15`,
+                border: `1px solid ${project.accent}40`,
+                color: project.accent,
+              }}
+            >
+              PROJECT // {project.num}
+            </span>
+            <span className="text-zinc-500 font-mono text-xs font-medium">
+              {project.period}
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h3 className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tight group-hover:text-[#b5ff20] transition-colors">
+            {project.title}
+          </h3>
+
+          <p
+            className="text-sm sm:text-base font-bold mb-5 tracking-tight font-mono"
+            style={{ color: project.accent }}
+          >
+            {project.subtitle}
+          </p>
+
+          {/* Core Description */}
+          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+            {project.desc}
+          </p>
+
+          {/* Impact Metric Chips */}
+          <div className="grid grid-cols-3 gap-3 mb-6">
+            {project.metrics.map((m, i) => (
+              <div
+                key={i}
+                className="bg-[#0c0919] border border-white/10 rounded-xl p-3 text-center"
+              >
+                <div className="text-white font-mono font-bold text-xs sm:text-sm truncate">
+                  {m.val}
+                </div>
+                <div className="text-zinc-500 font-mono text-[10px] uppercase tracking-wider mt-0.5">
+                  {m.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Architectural Key Bullets */}
+          <ul className="space-y-2.5 mb-8">
+            {project.bullets.map((b, i) => (
+              <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                <span
+                  className="font-bold text-sm mt-0.5"
+                  style={{ color: project.accent }}
+                >
+                  ▸
+                </span>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        
-        <h3 className="text-3xl sm:text-4xl font-black text-textMain mb-2 tracking-tight">
-          {project.title}
-        </h3>
-        <p className="text-primary text-base font-bold mb-6 tracking-tight">{project.subtitle}</p>
-        
-        <p className="text-textMuted text-base sm:text-lg leading-relaxed mb-8 max-w-xl">{project.desc}</p>
 
-        {/* Bullet Points */}
-        <ul className="space-y-3 mb-10">
-          {project.bullets.map((b, i) => (
-            <li key={i} className="flex items-start gap-3 text-textMuted text-sm sm:text-base font-medium">
-              <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-primary/30 flex-shrink-0 inline-block"></span>
-              {b}
-            </li>
-          ))}
-        </ul>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-3 perspective-[1000px] pt-4">
-          {project.tags.map((tag, i) => {
-            const isLeft = i % 2 === 0;
-            return (
-              <motion.span 
-                key={tag} 
-                initial={{ 
-                  opacity: 0, 
-                  y: -150, 
-                  rotateZ: isLeft ? -20 : 20, 
-                  rotateX: 50, 
-                  rotateY: isLeft ? -30 : 30,
-                  scale: 0.8 
-                }}
-                whileInView={{ 
-                  opacity: 1, 
-                  y: 0, 
-                  rotateZ: 0, 
-                  rotateX: 0, 
-                  rotateY: 0,
-                  scale: 1 
-                }}
-                viewport={{ once: false, margin: '-50px', amount: 0.1 }}
-                transition={{ 
-                  delay: 0.1 + ((i * 17) % 50) * 0.01, 
-                  type: "spring", 
-                  stiffness: 280, 
-                  damping: 12,
-                  mass: 1.5
-                }}
-                className="inline-block px-4 py-2 bg-gradient-to-b from-white to-[#f8fafc] border border-primary/20 rounded-xl text-[11px] sm:text-xs font-black text-textMain uppercase tracking-wider shadow-[0_5px_0_rgba(79,70,229,0.15),0_8px_15px_rgba(0,0,0,0.05)] cursor-default transition-colors"
-                style={{ transformStyle: 'preserve-3d' }}
+        {/* Tech Stack Pills & CTA */}
+        <div>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 bg-white/5 border border-white/10 rounded-xl text-xs font-mono font-semibold text-zinc-300 hover:border-white/30 transition-colors"
               >
                 {tag}
-              </motion.span>
-            );
-          })}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-4 flex-wrap pt-6 border-t border-white/10">
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-[#b5ff20] hover:bg-[#a3f013] text-black font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-full transition-all duration-300 shadow-[0_10px_25px_rgba(181,255,32,0.25)] hover:scale-105 active:scale-95"
+            >
+              <span>View Live Platform</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full transition-all duration-300"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>Source Code</span>
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -161,33 +289,49 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="">
-      {/* Section Label */}
-      <motion.span
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, margin: '-50px' }}
-        style={{ willChange: 'transform, opacity' }}
-        className="section-label block"
-      >
-        SELECT WORK
-      </motion.span>
+    <section id="projects" className="w-full relative">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/3 -right-40 w-96 h-96 bg-[#7047ff]/15 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Heading */}
-      <motion.h2
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, margin: '-50px' }}
-        style={{ willChange: 'transform, opacity' }}
-        className="text-4xl sm:text-5xl lg:text-6xl font-black text-textMain leading-tight mb-20 tracking-tight"
-      >
-        Featured <span className="text-primary">Projects</span>
-      </motion.h2>
+      {/* Section Header */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-20">
+        <div>
+          <motion.div
+            initial={{ opacity: 0, x: -15 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="section-label"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#b5ff20] animate-ping" />
+            <span>03 // FEATURED PRODUCTIONS</span>
+          </motion.div>
 
-      {/* Project Cards */}
-      <div className="flex flex-col gap-16 sm:gap-24 lg:gap-32">
-        {projectsData.map((project, idx) => (
-          <ProjectCard key={idx} project={project} index={idx} />
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase"
+          >
+            Flagship <span className="bg-gradient-to-r from-[#b5ff20] via-white to-[#7047ff] bg-clip-text text-transparent">Engineering</span>
+          </motion.h2>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-zinc-400 font-mono text-sm max-w-md"
+        >
+          // High-throughput distributed systems &amp; autonomous agent pipelines built for production workloads.
+        </motion.p>
+      </div>
+
+      {/* Projects List */}
+      <div className="flex flex-col gap-24 lg:gap-36">
+        {projectsData.map((project, index) => (
+          <ProjectCard key={project.num} project={project} index={index} />
         ))}
       </div>
     </section>

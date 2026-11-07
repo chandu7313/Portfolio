@@ -2,71 +2,109 @@ import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: 'Home', href: '#' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Certificates', href: '#certifications' },
+    { name: 'Education', href: '#education' }
+  ];
+
   return (
-    <nav className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 z-[100] transition-all duration-500 ${
-      scrolled 
-        ? 'bg-white/80 backdrop-blur-xl border-b border-primary/5 py-3 sm:py-4 shadow-sm' 
-        : 'bg-transparent py-5 sm:py-8'
-    }`}>
-      
-      {/* Brand / Logo */}
-      <div className="flex items-center gap-3 cursor-pointer group">
-        <div className={`w-7 h-3 rounded-xl transition-all duration-500 group-hover:rotate-12 ${
-          scrolled ? 'bg-primary shadow-sm' : 'bg-white'
-        }`}></div>
-        <span className={`font-black tracking-widest uppercase text-xs sm:text-sm transition-colors duration-500 ${
-          scrolled ? 'text-textMain' : 'text-white'
-        }`}>
-          Chandra <span className={scrolled ? 'text-primary' : 'text-white/70'}>Mohan</span>
-        </span>
-      </div>
-
-      {/* Center Links (Desktop only) */}
-      <div className="hidden lg:flex items-center gap-10 ml-auto mr-12">
-        {[
-          { name: 'About', href: '#about' },
-          { name: 'Skills', href: '#skills' },
-          { name: 'Projects', href: '#projects' },
-          { name: 'Training', href: '#training' },
-          { name: 'Contact', href: '#contact' }
-        ].map((item, i) => (
-          <a 
-            key={i} 
-            href={item.href} 
-            className={`transition-all duration-300 text-xs font-black uppercase tracking-widest hover:scale-110 ${
-              scrolled ? 'text-textMain/70 hover:text-primary' : 'text-white/60 hover:text-white'
-            }`}
-          >
-            {item.name}
+    <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+      <nav 
+        className={`w-full transition-all duration-300 ${
+          scrolled 
+            ? 'bg-[#07040d]/90 backdrop-blur-md py-3.5 border-b border-white/10 shadow-lg' 
+            : 'bg-transparent py-5 sm:py-7'
+        }`}
+      >
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 flex items-center justify-between">
+          
+          {/* Logo with Green Angled Ribbons matching reference */}
+          <a href="#" className="flex items-center gap-2.5 group">
+            <div className="flex items-center gap-1">
+              <div className="w-2.5 h-4.5 bg-[#b5ff20] -skew-x-[22deg] rounded-[1.5px] transition-transform duration-300 group-hover:scale-105" />
+              <div className="w-2.5 h-4.5 bg-[#b5ff20] -skew-x-[22deg] rounded-[1.5px] transition-transform duration-300 group-hover:scale-105" />
+            </div>
+            <span className="font-extrabold text-white text-base sm:text-lg tracking-wider select-none">
+              Chandra Mohan.
+            </span>
           </a>
-        ))}
-      </div>
 
-      {/* Right Actions */}
-      <div className="flex items-center gap-6">
-        <button className={`transition-all duration-500 hover:rotate-90 ${
-          scrolled ? 'text-textMain/60 hover:text-primary' : 'text-white/60 hover:text-white'
-        }`}>
-          {/* <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg> */}
-        </button>
-        {/* Mobile Menu Icon */}
-        <button className={`lg:hidden transition-colors ${
-          scrolled ? 'text-textMain' : 'text-white'
-        }`}>
-          {/* <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16"></path></svg> */}
-        </button>
-      </div>
+          {/* Center Navigation Links (Desktop) */}
+          <div className="hidden md:flex items-center gap-5 lg:gap-7 xl:gap-9">
+            {navLinks.map((link, idx) => (
+              <a
+                key={idx}
+                href={link.href}
+                className={`text-xs sm:text-sm font-semibold transition-colors duration-200 ${
+                  idx === 0 
+                    ? 'text-white hover:text-[#b5ff20]' 
+                    : 'text-zinc-300 hover:text-white'
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
 
-    </nav>
+          {/* Right Action: Contact Me Button */}
+          <div className="flex items-center gap-4">
+            <a
+              href="#contact"
+              data-cursor="pointer"
+              className="bg-[#b5ff20] hover:bg-[#a6ec15] text-black font-extrabold text-xs sm:text-sm px-5 sm:px-6 py-2.5 rounded-full transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+            >
+              Contact Me
+            </a>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-white p-1.5 focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-[#07040d]/95 backdrop-blur-xl border-b border-white/10 px-6 py-4 flex flex-col gap-4 animate-in slide-in-from-top-4 duration-200">
+            {navLinks.map((link, idx) => (
+              <a
+                key={idx}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-semibold text-zinc-300 hover:text-[#b5ff20] transition-colors py-1"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+        )}
+      </nav>
+    </header>
   );
 };
 
